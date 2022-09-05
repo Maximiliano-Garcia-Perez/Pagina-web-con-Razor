@@ -1,0 +1,45 @@
+﻿@page
+@using Final.web.Model
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Lista de Productos</h1><br /><br /><br />
+   
+</div>
+
+
+@{
+	int ID = 0;
+	CatalogoProductos catalogoproducto = new CatalogoProductos();
+
+	foreach (var item in catalogoproducto.productos)
+	{
+		
+	<div class="text-center"> 
+				<h4>
+				
+				<a href="detalleProductos?id=@item.id">
+			 	|| Nombre = @item.Nombre ||  stock Actual = @item.Stockactual ||  stock Minimo = @item.Stockminimo
+				</a>
+
+				</h4>
+	</div>
+		ID = @item.id;
+	}
+
+	<div class="text-center"> 
+			
+				<h4>La suma total de stock actual </h4>
+
+				<h2><a>	@catalogoproducto.Obtenertotal() </a></h2>
+			
+			
+	</div>
+
+
+	
+
+}

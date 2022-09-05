@@ -1,0 +1,52 @@
+﻿@page
+@using Final.web.Model
+@model Final.web.Pages.detalleProductosModel
+@{
+}
+@{
+	int id =Convert.ToInt32(Request.Query["id"]); 
+
+	CatalogoProductos catalogoProducto = new CatalogoProductos();
+
+	Productos encontrado = catalogoProducto.FindById(id);
+
+	foreach (Productos item in catalogoProducto.productos)
+	{
+		if(item.id == id)
+		{
+			 
+			
+			encontrado = item;
+			
+			
+			break;
+		}
+	}
+	if(encontrado!=null)
+	{
+
+		<div class="text-center">
+
+		<h2>Detalle de Productos</h2><br><br><br><br>
+
+		<div ><h4> Id =@encontrado.id, Nombre=@encontrado.Nombre, Stock Actual = @encontrado.Stockactual, StockMinimo = @encontrado.Stockminimo, </h4></div><br>
+		
+		
+		
+		
+		
+		</div>
+
+	}else
+	{
+		<div>No se encontro el producto</div>
+	}
+
+
+
+
+
+
+
+
+}
